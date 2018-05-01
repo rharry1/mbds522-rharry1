@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Data and Methods</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Richard Scheinfield's BDS522 Final Project</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Introduction</a>
+</li>
+<li>
+  <a href="data_and_methods.html">Data and Methods</a>
+</li>
+<li>
+  <a href="results.html">Results</a>
+</li>
+<li>
+  <a href="discussion_and_conclusion.html">Discussion and Conclusion</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Data and Methods</h1>
+
+</div>
+
+
+<div id="data-description" class="section level3">
+<h3>Data Description</h3>
+<p>The data I will be using to perform my study was sourced from the <em>Food and Agriculture Organization (FAO) of the United Nations</em>, and provides the food supply available in each European country per capita, per day, with units of kcal/capita/day. The supply figures given represent an average supply available per person, based on dividing a yearly average total daily supply of food by the present in-country population within the present geographical borders–for which mid-year estimates published by the <em>United Nations Population Division</em> are used. It should therefore be noted that the values given only approximate what may be consumed by individuals on a daily basis, and does not take into account the degree of losses of edible food and nutrients in the household, such as due to storage, preparation and cooking, or that foods may not be consumed in their primary raw form.</p>
+<p>Furthermore, the FAO received the forty-year supply data annually in the form of official statistics from FAO member countries. These statistics are calculated based off of data originating from surveys, administrative data, estimates based on expert observations, or a combination of the three. Lastly, the data collection method was up to the individual country, which could potentially affect the reliability and comparability of the data.</p>
+<p>The box plots below are a depiction of the raw data retreived from the FAO database.</p>
+<pre class="r"><code>five_year_reps &lt;- c(rep(&quot;2005&quot;,length(na.omit(foodsupply[1,,8]))),rep(&quot;2006&quot;,length(na.omit(foodsupply[2,,8]))),rep(&quot;2007&quot;,length(na.omit(foodsupply[3,,8]))),rep(&quot;2008&quot;,length(na.omit(foodsupply[4,,8]))),
+  rep(&quot;2009&quot;,length(na.omit(foodsupply[5,,8]))))
+fs &lt;- c(na.omit(foodsupply[1,,8]),na.omit(foodsupply[2,,8]),na.omit(foodsupply[3,,8]),
+        na.omit(foodsupply[4,,8]),na.omit(foodsupply[5,,8]))
+boxplot(fs~five_year_reps,col = &quot;cyan4&quot;,xlab = &quot;Year&quot;,ylab = &quot; Food Supply (kcal/capita/day)&quot;,
+        main = &quot;Example Five-Year Period of Food Supply Data&quot;)</code></pre>
+<p><img src="data_and_methods_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="method" class="section level3">
+<h3>Method</h3>
+<p>I used a one-sample t-test to determine whether per capita average food supplies for European countires over five-year periods were significantly different at a 0.05 significance level from the European continental figure for the same time range. That is to say, I am looking to see if there is strong enough evidence in any five-year sample to reject the null hypothesis that the difference between the true sample mean and comparison value is zero.</p>
+<p>This significance test makes four main assumptions that need to be met in order to have confidence in the results. Included are the requirements that the dependent variable (five-year average food supply per capita, per day) is continuous, observations are independent of one another, and that the dependent variable is approximatley normally distributed and does not contain any extreme outliers.</p>
+<p>The variable is continuous because it can take on any value within the range occupied by the supply figures, it is independent because the values come out of different European countries, it is distributed approximately normal in all samples as exemplified by the overlay of a density curve on a histogram of one sample below, and does not contain any outliers that would significantly affect the results as depicted in the box plots below of all samples.</p>
+<pre class="r"><code># Make hisogram of average food supplies for 2005-2009 and overlay a normal density curve
+x &lt;- country_avgs[8,]
+hist(x,freq = F,main = &quot;Average Food Supply Available Per Capita \n in European Countries (2005 - 2009)&quot;,
+          xlab = &quot;Average Food Supply (kcal/capita/day)&quot;,col = &quot;cyan3&quot;,ylim = c(0,0.002))
+xfit &lt;- seq(min(x,na.rm = T), max(x,na.rm = T),length.out = length(na.omit(x)))
+yfit &lt;- na.omit(dnorm(x = xfit,mean = mean(x,na.rm = T),sd = sd(x,na.rm = T)))
+lines(xfit,yfit, col = &quot;black&quot;,lwd  = 2)</code></pre>
+<p><img src="data_and_methods_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># Make box plots of all 8 five-year samples of averaged food supply data
+sample_reps &lt;- c(rep(&quot;1&quot;,length(na.omit(country_avgs[1,]))),rep(&quot;2&quot;,length(na.omit(country_avgs[2,]))),
+                 rep(&quot;3&quot;,length(na.omit(country_avgs[3,]))),rep(&quot;4&quot;,length(na.omit(country_avgs[4,]))),
+                 rep(&quot;5&quot;,length(na.omit(country_avgs[5,]))),rep(&quot;6&quot;,length(na.omit(country_avgs[6,]))),
+                 rep(&quot;7&quot;,length(na.omit(country_avgs[7,]))),rep(&quot;8&quot;,length(na.omit(country_avgs[8,]))))
+c &lt;- c(na.omit(country_avgs[1,]),na.omit(country_avgs[2,]),na.omit(country_avgs[3,]),
+        na.omit(country_avgs[4,]),na.omit(country_avgs[5,]),na.omit(country_avgs[6,]),na.omit(country_avgs[7,]),
+        na.omit(country_avgs[8,]))
+boxplot(c~sample_reps,col = &quot;cyan3&quot;,xlab = &quot;Five-Year Sample #&quot;,ylab = &quot; Average Food Supply (kcal/capita/day)&quot;,
+        main = &quot;Average Food Supply Available Per Capita \n in European Countries for Each Five-Year Sample&quot;)</code></pre>
+<p><img src="data_and_methods_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

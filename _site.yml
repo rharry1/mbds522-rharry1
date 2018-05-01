@@ -1,0 +1,19 @@
+name: my-website
+output_dir: '.'
+navbar:
+  title: Richard Scheinfield's BDS522 Final Project
+  left:
+  - text: Introduction
+    href: index.html
+  - text: Data and Methods
+    href: data_and_methods.html
+  - text: Results
+    href: results.html
+  - text: Discussion and Conclusion
+    href: discussion_and_conclusion.html
+output:
+  html_document:
+    theme: cosmo
+    lib_dir: site_libs
+    self_contained: no
+

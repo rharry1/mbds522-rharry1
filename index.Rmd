@@ -1,0 +1,21 @@
+---
+title: "Introduction"
+---
+
+### Title: *An analysis of the variation in food supply among European countries over a forty-year period*
+
+
+### Problem
+
+In any country, the per capita food supply available for human consumption per day can be a critical component in the overall health and quality of life experienced by members of the population. Therefore, it is well worth the effort to take a closer look at how food supplies around the world have varied through the years--potentially affected by factors or events such as war, weather patterns or international trade.
+
+In this study, I have focused specifically on food supply in terms of caloric value available to people residing in European countries, and how this supply has compared with the European continental average over the course of forty years (1970 - 2009). 
+
+
+### Hypothesis
+
+I hypothesize the average food supply available in any European country will not differ significantly from the continental mean in any given five-year period.
+
+
+
+

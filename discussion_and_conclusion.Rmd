@@ -1,0 +1,7 @@
+---
+title: "Discussion and Conclusion"
+---
+
+Since two of the samples vary enough from their respective continental means to yeild a significant test result, I can not confirm my hypothesis because I ran my study on the belief that the difference in food supplies between Euopean countries over the past forty years has always been low. While the observed differences between true sample mean and hypothesized mean in the two samples showing significance is not too great, it is high enough for this significance test to cross the 0.05 significance level. 
+
+One limitation of my analysis is that I did not take into account other factors that may have influenced a country's food supply, such as average five-year GDP/capita. I believe including this data could definitely give a more informed understanding as to why food supply may vary through the years. Additionally, it would be interesting to analyze the effect of GDP on food supply over the same forty-year time range in third world African countries, which I think would probably yeild significant differences when comparing to the mean African continent supply. 

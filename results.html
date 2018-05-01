@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Results</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Richard Scheinfield's BDS522 Final Project</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Introduction</a>
+</li>
+<li>
+  <a href="data_and_methods.html">Data and Methods</a>
+</li>
+<li>
+  <a href="results.html">Results</a>
+</li>
+<li>
+  <a href="discussion_and_conclusion.html">Discussion and Conclusion</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Results</h1>
+
+</div>
+
+
+<div id="code-to-process-data-and-perform-one-sample-t-test" class="section level3">
+<h3>Code to Process Data and Perform One-Sample t-Test</h3>
+<pre class="r"><code>food &lt;- read.csv(&quot;FAOSTAT_data_4-29-2018.csv&quot;)
+attach(food)
+
+food_continent &lt;- read.csv(&quot;FAOSTAT_data_4-30-2018_continent.csv&quot;)
+attach(food_continent)
+
+# Initialize 3D array to store matrices of 5-year food supplies for each country 
+foodsupply &lt;- array(NA,c(5,length(unique(Country)),length(unique(Year))/5))
+# Get dimensions of &quot;foodsupply&quot; array to use later
+dims &lt;- dim(foodsupply)
+
+# Initalize matrices to store averages and SDs of foodsupply for all countries included in a 5-year period
+country_avgs &lt;- matrix(NA,nrow = length(unique(Year))/dims[1],ncol = length(unique(Country)))
+country_sds &lt;- matrix(NA,nrow = length(unique(Year))/dims[1],ncol = length(unique(Country)))
+
+# Initialize matrices to store 5-year continental averages and SDs
+continental_avgs &lt;- matrix(nrow = length(unique(Year))/dims[1],ncol = 1)
+continental_sds &lt;- matrix(nrow = length(unique(Year))/dims[1],ncol = 1)
+
+# Initialize matrix to store indices of &quot;Year&quot; containing years of current 5-year period 
+# (each row is a &quot;Value&quot; from a country having data from specfic year, so up to 44 rows; each column is a year, so 5 columns)
+year_inds &lt;- array(NA,c(length(unique(Country)),dims[1],length(unique(Year))/dims[1]))
+
+# Initalize vector to store p-values, and matrix to store confidence intervals from t-tests
+p_values &lt;- matrix(nrow = length(unique(Year))/dims[1], ncol = 1)
+conf_ints &lt;- matrix(nrow = length(unique(Year))/dims[1], ncol = 2)
+
+
+for (yy in seq(from = 1,to = length(unique(Year)),by = dims[1])) {
+    # Get indices for each year of current 5-year period from &quot;Year&quot; variable
+    n &lt;- 0
+    for (gg in 1:dims[1]) {
+    inds = which(Year == Year[yy + n])
+    year_inds[1:length(inds),gg,(yy+4)/dims[1]] &lt;- inds
+    n &lt;- n + 1
+    }
+    
+    # Get the food supply(kcal/capita/day) for each country, each year, having data for current 5-year period
+    for (ii in 1:dims[1]) {
+      foodsupply[ii,,(yy+4)/dims[1]] &lt;- Value[year_inds[,ii,(yy+4)/dims[1]]]
+    }
+    
+    # Calculate average and SD of food suppy for each country over current 5-year period
+    for (jj in 1:length(unique(Country))) {
+      country_avgs[(yy+4)/dims[1],jj] &lt;- mean(foodsupply[,jj,(yy+4)/dims[1]],na.rm = T)
+      country_sds[(yy+4)/dims[1],jj] &lt;- sd(foodsupply[,jj,(yy+4)/dims[1]],na.rm = T)
+    }
+
+    # Calculate the average European continental food supply and SD for current 5-year period
+    continental_avgs[(yy+4)/dims[1]] &lt;- mean(Value_con[yy:(yy+4)])
+    continental_sds[(yy+4)/dims[1]] &lt;- sd(Value_con[yy:(yy+4)])
+  
+    # Perform one-sample t-test on average food supply/country over current 5-year period
+    t = t.test(country_avgs[(yy+4)/dims[1],],mu = continental_avgs[(yy+4)/dims[1]])
+    p_values[(yy+4)/dims[1],] &lt;- t$p.value
+    conf_ints[(yy+4)/dims[1],] &lt;- t$conf.int
+    
+}    </code></pre>
+<pre class="r"><code>conf_ints_singlecell &lt;- transform(conf_ints,newcol = paste(conf_ints[,1],conf_ints[,2],sep = &quot;-&quot;))
+results &lt;- data.frame(p_values,conf_ints_singlecell[,3],null_mean,estimate_mean,
+                      row.names = c(&quot;1970-1974&quot;,&quot;1975-1979&quot;,&quot;1980-1984&quot;,&quot;1985-1989&quot;,&quot;1990-1994&quot;,&quot;1995-1999&quot;,
+                                    &quot;2000-2004&quot;,&quot;2005-2009&quot;))
+colnames(results) &lt;- c(&quot;P-Value&quot;,&quot;Confidence Interval&quot;,&quot;Continetnal Mean&quot;,&quot;True Sample Mean&quot;)
+kable(results,format = &quot;html&quot;,digits = 4,align = &#39;c&#39;,caption = &quot;Results of one-sample t-test on five-year averaged food supplies available per capita, per day in European countries&quot;) %&gt;%
+   kable_styling(bootstrap_options = &quot;bordered&quot;,font_size = 12)</code></pre>
+<table class="table table-bordered" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Results of one-sample t-test on five-year averaged food supplies available per capita, per day in European countries
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+P-Value
+</th>
+<th style="text-align:center;">
+Confidence Interval
+</th>
+<th style="text-align:center;">
+Continetnal Mean
+</th>
+<th style="text-align:center;">
+True Sample Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1970-1974
+</td>
+<td style="text-align:center;">
+0.1101
+</td>
+<td style="text-align:center;">
+3081.60197338328-3281.33648815518
+</td>
+<td style="text-align:center;">
+3261.8
+</td>
+<td style="text-align:center;">
+3181.469
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1975-1979
+</td>
+<td style="text-align:center;">
+0.0839
+</td>
+<td style="text-align:center;">
+3135.88568929592-3317.22200301178
+</td>
+<td style="text-align:center;">
+3305.8
+</td>
+<td style="text-align:center;">
+3226.554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1980-1984
+</td>
+<td style="text-align:center;">
+0.1686
+</td>
+<td style="text-align:center;">
+3161.85167883223-3354.64062886007
+</td>
+<td style="text-align:center;">
+3324.6
+</td>
+<td style="text-align:center;">
+3258.246
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1985-1989
+</td>
+<td style="text-align:center;">
+0.2037
+</td>
+<td style="text-align:center;">
+3201.99197974539-3406.68494333154
+</td>
+<td style="text-align:center;">
+3369.2
+</td>
+<td style="text-align:center;">
+3304.338
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-1994
+</td>
+<td style="text-align:center;">
+0.0168
+</td>
+<td style="text-align:center;">
+3065.05238434224-3223.10437241451
+</td>
+<td style="text-align:center;">
+3241.8
+</td>
+<td style="text-align:center;">
+3144.078
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1995-1999
+</td>
+<td style="text-align:center;">
+0.4184
+</td>
+<td style="text-align:center;">
+3043.02774936744-3247.02630468662
+</td>
+<td style="text-align:center;">
+3186.2
+</td>
+<td style="text-align:center;">
+3145.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2000-2004
+</td>
+<td style="text-align:center;">
+0.1598
+</td>
+<td style="text-align:center;">
+3100.91331981459-3307.8024696591
+</td>
+<td style="text-align:center;">
+3277.6
+</td>
+<td style="text-align:center;">
+3204.358
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-2009
+</td>
+<td style="text-align:center;">
+0.0439
+</td>
+<td style="text-align:center;">
+3197.07992185878-3352.68674480789
+</td>
+<td style="text-align:center;">
+3355.0
+</td>
+<td style="text-align:center;">
+3274.883
+</td>
+</tr>
+</tbody>
+</table>
+<p>The P-values shown in the table above indicate that for a majority (6 out of 8) of the samples, the five-year averaged food supply available each day to every member of a European country’s population did not differ significantly from the five-year continetnal mean. However, in two of the samples comprising years 1990-1994 and 2005-2009, the t-tests resulted in P-values less than alpha(0.05), leading to a rejection of the null hypothesis. However, the evidence against the null for the 1990-1994 sample is much stronger than for 2005-2009 because its P-Value is quite a bit smaller.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
