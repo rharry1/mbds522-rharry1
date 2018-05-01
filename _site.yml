@@ -13,7 +13,7 @@ navbar:
     href: discussion_and_conclusion.html
 output:
   html_document:
-    theme: cosmo
+    theme: cerulean
     lib_dir: site_libs
     self_contained: no
 
